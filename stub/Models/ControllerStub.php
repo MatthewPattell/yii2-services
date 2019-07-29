@@ -10,16 +10,26 @@ namespace MP\Services\Stub\Models;
 
 use MP\Services\Stub\ImplementServicesStub;
 use MP\Services\Stub\Services\BaseControllerServiceStub;
-use yii\base\BaseObject;
+use yii\base\Controller;
+use yii\base\Module;
 
 /**
  * Class ControllerStub
  *
+ * @property-read BaseControllerServiceStub $service
+ *
  * @package MP\Services\Stub
  */
-class ControllerStub extends BaseObject
+class ControllerStub extends Controller
 {
     use ImplementServicesStub;
+
+    public $customField = 'foo';
+
+    public static function createSelf(): self
+    {
+        return new self('stubController', new Module('stubModule'));
+    }
 
     /**
      * @inheritdoc

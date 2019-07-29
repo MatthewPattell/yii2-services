@@ -101,6 +101,17 @@ trait ImplementServices
 
     /**
      * @inheritdoc
+     * @param $name
+     * @return bool
+     * @throws InvalidConfigException
+     */
+    public function __isset($name)
+    {
+        return parent::__isset($name) || $this->hasService($name);
+    }
+
+    /**
+     * @inheritdoc
      * @throws UnknownPropertyException
      * @throws InvalidConfigException
      */
